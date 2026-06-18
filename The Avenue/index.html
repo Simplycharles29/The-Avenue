@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Avenue Lounge – Wuse 2, Abuja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/images/avenue-logo.jpeg" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --black:    #0A0A0A;
+      --deep:     #111111;
+      --card:     #181818;
+      --border:   #2A2A2A;
+      --gold:     #C9A84C;
+      --gold-lt:  #E2C47A;
+      --gold-dk:  #8C6E2F;
+      --cream:    #F5F0E8;
+      --muted:    #888888;
+      --white:    #FFFFFF;
+
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+
+      --ease:     cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─── SCROLLBAR ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dk); border-radius: 2px; }
+
+    /* ─── UTILITY ────────────────────────────────────────── */
+    .gold { color: var(--gold); }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .section-pad { padding: 100px 0; }
+    .container { width: min(1200px, 100% - 48px); margin-inline: auto; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s var(--ease);
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-gold:hover { background: var(--gold-lt); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .rule {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 20px 0;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 0;
+      transition: background .4s var(--ease), padding .4s var(--ease);
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,.95);
+      backdrop-filter: blur(12px);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-betweeen;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      line-height: 1;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.7);
+      transition: color .25s;
+      padding: 10px 20px;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-reserve {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dk);
+      padding: 10px 20px;
+      transition: all .25s;
+    }
+    .nav-reserve:hover { background: var(--gold); color: var(--black); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--white);
+      transition: all .3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .05em;
+      transition: color .2s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+     .mobile-close {
+      position: absolute;
+      top: 28px; right: 24px;
+      font-size: 28px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+   
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 40%, rgba(201,168,76,.12) 0%, transparent 60%),
+        linear-gradient(160deg, #1a1208 0%, #0A0A0A 50%, #0d0d0d 100%);
+        background-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0.8)), url('/The\ Avenue/images/avenue-logo.jpeg');
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .hero-watermark {
+      position: absolute;
+      right: -0.05em;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-size: clamp(180px, 28vw, 400px);
+      font-weight: 600;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,.12);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+    .hero-orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
+      top: 10%; right: 15%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+    .hero-content .container { padding-bottom: clamp(60px,10vh,120px); }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 8vw, 110px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -.01em;
+      margin-bottom: 28px;
+      max-width: 14ch;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .06em;
+      max-width: 46ch;
+      line-height: 1.8;
+      margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      right: 48px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+    .scroll-cue::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: .3; transform: scaleY(.6) translateY(0); }
+      50%       { opacity: 1;  transform: scaleY(1)  translateY(4px); }
+    }
+
+    /* ─── ABOUT STRIP ────────────────────────────────────── */
+    .about-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .about-strip-inner {
+      display: flex;
+    }
+    .strip-item {
+      flex: 1;
+      padding: 16px 40px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .strip-item:last-child { border-right: none; }
+    .strip-icon { font-size: 22px; opacity: .7; }
+    .strip-label {
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .strip-value {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    /* ─── EXPERIENCE ─────────────────────────────────────── */
+    .experience { background: var(--deep); }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .exp-card {
+      background: var(--deep);
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+      transition: background .4s var(--ease);
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 100%, rgba(201,168,76,.06), transparent);
+      opacity: 0;
+      transition: opacity .4s var(--ease);
+    }
+    .exp-card:hover::before { opacity: 0; }
+    .exp-card:first-child:hover { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/The\ Avenue/images/nightlife.png') }
+    .exp-card:nth-child(2):hover { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/The\ Avenue/images/food.png') }
+    .exp-card:nth-child(3):hover { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/The\ Avenue/images/dining.png') }
+    .exp-card:nth-child(4):hover { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/The\ Avenue/images/event.png') }
+    .exp-num {
+      font-family: var(--serif);
+      font-size: 64px;
+      font-weight: 300;
+      color: rgba(201,168,76,.15);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .exp-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--cream);
+    }
+    .exp-desc {
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 34ch;
+    }
+
+    /* ─── EVENTS ─────────────────────────────────────────── */
+    .events { background: var(--black); }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.1;
+      max-width: 12ch;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    .events-list { display: flex; flex-direction: column; }
+    .event-row {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      transition: border-color .25s;
+    }
+    .event-row:last-child { border-bottom: 1px solid var(--border); }
+    .event-row:hover { border-top-color: var(--gold-dk); }
+    .event-day {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .event-month {
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .event-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .event-meta {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .05em;
+    }
+
+    /* ─── SPACES ─────────────────────────────────────────── */
+    .spaces { background: var(--deep); }
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .space-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .space-card-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      position: relative;
+      overflow: hidden;
+    }
+    .space-img-1 { background: linear-gradient(135deg, #1a150a 0%, #2d2010 60%, #1a130a 100%); }
+    .space-img-2 { background: linear-gradient(135deg, #0a0d1a 0%, #101828 60%, #0a0a14 100%); }
+    .space-img-3 { background: linear-gradient(135deg, #0a150a 0%, #0d2010 60%, #0a0d0a 100%); }
+    .space-img-4 { background: linear-gradient(135deg, #150a1a 0%, #201028 60%, #100a14 100%); }
+    .space-img-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .space-body { padding: 28px 32px 32px; }
+    .space-type {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px
+    }
+    .space-name {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .space-desc {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* ─── RESERVATION ────────────────────────────────────── */
+    .reservation {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .reservation::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.05) 0%, transparent 70%);
+      top: -200px; right: -200px;
+      pointer-events: none;
+    }
+    .res-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .res-lead {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 14ch;
+    }
+    .res-lead em { font-style: italic; color: var(--gold); }
+    .res-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 36px;
+      max-width: 40ch;
+    }
+    .res-contacts { display: flex; flex-direction: column; gap: 14px; }
+    .res-contact-row { display: flex; align-items: center; gap: 14px; font-size: 13px; }
+    .res-contact-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .res-contact-label { color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .res-contact-val { color: var(--cream); margin-top: 2px; }
+
+    .res-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 44px 40px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--black);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 14px 16px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color .25s;
+    }
+    .form-group select { cursor: pointer; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold-dk); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); }
+    .form-submit {
+      margin-top: 24px;
+      width: 100%;
+      padding: 18px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s;
+    }
+    .form-submit:hover { background: var(--gold-lt); }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .social-row { display: flex; gap: 12px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--muted);
+      transition: all .25s;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li { font-size: 13px; color: var(--muted); transition: color .2s; cursor: pointer; }
+    .footer-col ul li:hover { color: var(--cream); }
+    .footer-col p { font-size: 13px; color: var(--muted); line-height: 1.9; }
+    .footer-col p strong { color: var(--cream); font-weight: 400; }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: .05em; }
+    .footer-bottom-links { display: flex; gap: 28px; }
+    .footer-bottom-links a { font-size: 11px; color: var(--muted); transition: color .2s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .res-layout { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-reserve { display: none; }
+      .hamburger { display: flex; }
+      .section-pad { padding: 72px 0; }
+      .about-strip-inner { flex-wrap: wrap; }
+      .strip-item { flex: 1 1 calc(50% - 1px); border-bottom: 1px solid var(--border); }
+      .exp-grid { grid-template-columns: 1fr; }
+      .exp-card { padding: 40px 28px; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .event-row { grid-template-columns: 64px 1fr; gap: 20px; }
+      .event-row .btn { display: none; }
+      .spaces-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .scroll-cue { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; text-align: center; }
+      .strip-item { flex: 1 1 100%; }
+      .res-form { padding: 28px 20px; }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .logo-flex{
+        display: flex;
+    }
+    .logo-flex img{
+        width: 5%;
+    }
+    .nightlife{
+        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/nightlife.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .food{
+        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/food.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .dining{
+        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/dining.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .event{
+        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/event.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container nav-inner">
+      <div class="logo-flex">
+        <img src="/images/avenue-logo.jpeg" alt="">
+        <a href="#" class="nav-logo">The <span>Avenue</span> Lounge</a>
+    </div>
+      <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#spaces">Spaces</a></li>
+        <li><a href="#reserve">Reserve</a></li>
+      </ul>
+      <a href="#reserve" class="nav-reserve">Book a Table</a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <span class="mobile-close" id="mobileClose">✕</span>
+    <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#events"     class="mobile-link">Events</a>
+    <a href="#spaces"     class="mobile-link">Spaces</a>
+    <a href="#reserve"    class="mobile-link">Reserve</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-watermark">A</div>
+    <div class="hero-content">
+      <div class="container">
+        <!-- <div class="hero-eyebrow fade-up">
+          <span class="eyebrow">Wuse 2 · Abuja</span>
+        </div> -->
+        <h1 class="hero-h1 fade-up">Where <em>Food</em> Meets<em>Vibes</em></h1>
+        <p class="hero-sub fade-up">
+          Where Abuja's finest nights begin. Elevated nightlife, great food,
+          and a lounge experience unlike any other — open 24/7; club experience — 10pm.
+        </p>
+        <div class="hero-actions fade-up">
+          <a href="#reserve" class="btn btn-gold">Reserve a Table</a>
+          <a href="#experience" class="btn btn-outline">Our Experience</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="about-strip">
+    <div class="container">
+      <div class="about-strip-inner">
+        <div class="strip-item">
+          <div class="strip-icon">🕐</div>
+          <div>
+            <div class="strip-label">Hours</div>
+            <div class="strip-value">Open 24 Hours</div>
+          </div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon">📍</div>
+          <div>
+            <div class="strip-label">Location</div>
+            <div class="strip-value">27 Alexandria Crescent, Wuse 2</div>
+          </div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon">📞</div>
+          <div>
+            <div class="strip-label">Reservations</div>
+            <div class="strip-value">0802 807 6606</div>
+          </div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon">🍽</div>
+          <div>
+            <div class="strip-label">Cuisine</div>
+            <div class="strip-value">Lounge · Dining · Nightlife</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section class="experience section-pad" id="experience">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div>
+          <p class="eyebrow">What We Offer</p>
+          <span class="rule"></span>
+          <h2 class="section-title">The <em>Avenue</em><br>Experience</h2>
+        </div>
+        <p style="font-size:13px;color:var(--muted);max-width:38ch;line-height:1.9;">
+          Every detail at The Avenue is curated to elevate your evening — from the ambience to the last sip.
+        </p>
+      </div>
+      <div class="exp-grid fade-up">
+        <div class="exp-card nightlife">
+          <div class="exp-num">01</div>
+          <h3 class="exp-title">Premium Nightlife</h3>
+          <p class="exp-desc">Wuse 2's most electric nights happen here. World-class DJ sets, curated playlists, and a dance floor that doesn't sleep.</p>
+        </div>
+        <div class="exp-card food">
+          <div class="exp-num">02</div>
+          <h3 class="exp-title">Great Food & Drinks</h3>
+          <p class="exp-desc">From Afro-fusion cuisine to international cocktails — every dish and pour is crafted with intention and excellence.</p>
+        </div>
+        <div class="exp-card dining">
+          <div class="exp-num">03</div>
+          <h3 class="exp-title">Private Dining</h3>
+          <p class="exp-desc">Intimate private dining arrangements for celebrations, corporate events, and exclusive gatherings in a refined atmosphere.</p>
+        </div>
+        <div class="exp-card event">
+          <div class="exp-num">04</div>
+          <h3 class="exp-title">Event Hosting</h3>
+          <p class="exp-desc">Birthday takeovers, album launches, and brand activations — The Avenue is the canvas for your most memorable events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="events section-pad" id="events">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div>
+          <p class="eyebrow">What's On</p>
+          <span class="rule"></span>
+          <h2 class="section-title">Upcoming<br><em>Events</em></h2>
+        </div>
+        <a href="#reserve" class="btn btn-outline">View All Events</a>
+      </div>
+      <div class="events-list fade-up">
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-day">20</div>
+            <div class="event-month">Jun</div>
+          </div>
+          <div class="event-info">
+            <div class="event-name">Friday Night Live</div>
+            <div class="event-meta">Friday, June 20 · 9PM – Late · The Avenue Main Floor</div>
+          </div>
+          <a href="#reserve" class="btn btn-outline">Book Now</a>
+        </div>
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-day">21</div>
+            <div class="event-month">Jun</div>
+          </div>
+          <div class="event-info">
+            <div class="event-name">Saturday Vibes</div>
+            <div class="event-meta">Saturday, June 21 · 8PM – Late · Main Floor & Terrace</div>
+          </div>
+          <a href="#reserve" class="btn btn-outline">Book Now</a>
+        </div>
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-day">27</div>
+            <div class="event-month">Jun</div>
+          </div>
+          <div class="event-info">
+            <div class="event-name">End of Month Takeover</div>
+            <div class="event-meta">Friday, June 27 · 9PM – Late · Full Venue</div>
+          </div>
+          <a href="#reserve" class="btn btn-outline">Book Now</a>
+        </div>
+        <div class="event-row">
+          <div class="event-date-box">
+            <div class="event-day">05</div>
+            <div class="event-month">Jul</div>
+          </div>
+          <div class="event-info">
+            <div class="event-name">Independence Night</div>
+            <div class="event-meta">Saturday, July 5 · 8PM – Late · The Avenue Main Floor</div>
+          </div>
+          <a href="#reserve" class="btn btn-outline">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPACES -->
+  <section class="spaces section-pad" id="spaces">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div>
+          <p class="eyebrow">Event Spaces</p>
+          <span class="rule"></span>
+          <h2 class="section-title">Private &<br><em>Special Events</em></h2>
+        </div>
+      </div>
+      <div class="spaces-grid fade-up">
+        <div class="space-card">
+          <div class="space-card-img space-img-2">
+            <div class="space-img-overlay"><img src="/images/lounge.jpg" alt=""></div>
+          </div>
+          <div class="space-body">
+            <div class="space-type">The · Lounge</div>
+            <h3 class="space-name">The Main Floor</h3>
+            <p class="space-desc">The heartbeat of The Avenue. Full DJ setup, premium lighting rig, and a bar built for the night's best moments.</p>
+            <a href="#reserve" class="btn btn-outline">Reserve Space</a>
+          </div>
+        </div>
+        <div class="space-card">
+          <div class="space-card-img space-img-3">
+            <div class="space-img-overlay"><img src="/images/club.jpg" alt=""></div>
+          </div>
+          <div class="space-body">
+            <div class="space-type">Club · Room</div>
+            <h3 class="space-name">The Private Room</h3>
+            <p class="space-desc">An exclusive dining suite for up to 20 guests. Tailored menus, personal service, and total privacy for your event.</p>
+            <a href="#reserve" class="btn btn-outline">Reserve Space</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="reservation section-pad" id="reserve">
+    <div class="container">
+      <div class="res-layout">
+        <div class="res-left fade-up">
+          <p class="eyebrow">Get Your Experience</p>
+          <span class="rule"></span>
+          <h2 class="res-lead">Make a <em>Reservation</em></h2>
+          <p class="res-body">
+            Whether it's a night out with friends, a private celebration, or a full event takeover — reach us directly or fill the form and our team will get back to you within hours.
+          </p>
+          <div class="res-contacts">
+            <div class="res-contact-row">
+              <div class="res-contact-icon">📞</div>
+              <div>
+                <div class="res-contact-label">Call Us</div>
+                <div class="res-contact-val">+2348033016401 / +234 704 850 0004</div>
+              </div>
+            </div>
+            <div class="res-contact-row">
+              <div class="res-contact-icon">📍</div>
+              <div>
+                <div class="res-contact-label">Find Us</div>
+                <div class="res-contact-val"> Alexandria Crescent, Wuse 2, Abuja</div>
+              </div>
+            </div>
+            <div class="res-contact-row">
+              <div class="res-contact-icon">📸</div>
+              <div>
+                <div class="res-contact-label">Follow Us</div>
+                <div class="res-contact-val">
+                  <a href="https://www.instagram.com/theavenueloungewuse" target="_blank" style="color:var(--gold)">@theavenueloungewuse</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="res-form fade-up">
+          <p class="eyebrow" style="margin-bottom:24px;">Book Your Table</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" id="firstName" placeholder="Chioma" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" id="lastName" placeholder="Okafor" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" id="resDate"/>
+            </div>
+            <div class="form-group">
+              <label>Time</label>
+              <input type="time" id="resTime" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Guests</label>
+              <select id="guests">
+                <option>1 – 2 Guests</option>
+                <option>3 – 5 Guests</option>
+                <option>6 – 10 Guests</option>
+                <option>10+ Guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Space</label>
+              <select id="space">
+                <option>The Lounge</option>
+                <option>The club room</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Phone Number</label>
+              <input type="tel" id="phone" placeholder="+234 800 000 0000" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Special Requests</label>
+              <textarea id="notes" placeholder="Birthday surprise, dietary requirements, etc."></textarea>
+            </div>
+          </div>
+          <button class="form-submit">Confirm Reservation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">The <span>Avenue</span></div>
+          <p class="footer-tagline">"Beyond the ordinary.<br>Nightlife. Great food. Lounge."</p>
+          <div class="social-row">
+            <a href="https://www.facebook.com/avenuelounge" target="_blank" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/theavenueloungewuse" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@the.avenue.lounge?is_from_webapp=1&sender_device=pc" target="_blank" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#spaces">Event Spaces</a></li>
+            <li><a href="#reserve">Reservations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Opening Hours</h4>
+          <ul>
+            <li>Monday – Sunday</li>
+            <li>Open 24 Hours</li>
+            <li style="margin-top:12px;color:var(--gold-dk)">We never close.</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <strong>Alexandria Crescent</strong><br>
+            Wuse 2, Abuja, Nigeria<br><br>
+            <strong>+2348033016401</strong><br>
+            +234 704 850 0004<br><br>
+            <a href="https://www.instagram.com/theavenueloungewuse" style="color:var(--gold)">@theavenueloungewuse</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; <script>document.write(new Date().getFullYear());</script> The Avenue Lounge, Wuse 2. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open')); 
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 150);
+      });
+    }, 200);
+
+    // FORM → WHATSAPP
+    document.querySelector('.form-submit').addEventListener('click', () => {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName  = document.getElementById('lastName').value.trim();
+      const date = document.getElementById('resDate').value;
+      const time = document.getElementById('resTime').value;
+      const guests = document.getElementById('guests').value;
+      const space = document.getElementById('space').value;
+      const phone = document.getElementById('phone').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      if (!firstName || !lastName || !date || !time || !phone) {
+        alert('Please fill in your name, date, time, and phone number before submitting.');
+        return;
+      }
+
+      const msg = [
+        `🍾 *New Reservation – The Avenue Lounge*`,
+        ``,
+        `👤 *Name:* ${firstName} ${lastName}`,
+        `📅 *Date:* ${date}`,
+        `🕐 *Time:* ${time}`,
+        `👥 *Guests:* ${guests}`,
+        `📍 *Space:* ${space}`,
+        `📞 *Contact:* ${phone}`,
+        notes ? `📝 *Special Requests:* ${notes}` : null,
+      ].filter(Boolean).join('\n');
+
+      const waNumber = '2348068483627'; // 0802 807 6606 in international format
+      window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+
+       // Form submit
+    document.querySelector('.form-submit').addEventListener('click', () => {
+      alert('Thank you! Your reservation request has been received.\nOur team will contact you shortly.');
+    });
+  </script>
+</body>
+</html>
